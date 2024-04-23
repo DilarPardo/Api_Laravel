@@ -1,0 +1,1515 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "API Studentse",
+        "description": "Studentse List Api",
+        "version": "1.0"
+    },
+    "servers": [
+        {
+            "url": "http://127.0.0.1:8000"
+        }
+    ],
+    "paths": {
+        "/api/register": {
+            "post": {
+                "tags": [
+                    "register"
+                ],
+                "summary": "Register user",
+                "operationId": "ad4f88ef05a7018e659753feef02aea6",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "": {
+                                        "properties": {
+                                            "name": {
+                                                "type": "string"
+                                            },
+                                            "email ": {
+                                                "type": "string"
+                                            },
+                                            "password ": {
+                                                "type": "string"
+                                            }
+                                        },
+                                        "type": "object"
+                                    }
+                                },
+                                "type": "object",
+                                "example": {
+                                    "name": "nuevo user",
+                                    "email": "nuevouser@gmail.com",
+                                    "password": "0123456789"
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "CREATED",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "id": {
+                                            "type": "number",
+                                            "example": 1
+                                        },
+                                        "name": {
+                                            "type": "string",
+                                            "example": "nuevo user"
+                                        },
+                                        "email": {
+                                            "type": "string",
+                                            "example": "nuevouser@gmail.com"
+                                        },
+                                        "password": {
+                                            "type": "string",
+                                            "example": "0123456789"
+                                        },
+                                        "created_at": {
+                                            "type": "string",
+                                            "example": "2023-02-23T00:09:16.000000Z"
+                                        },
+                                        "updated_at": {
+                                            "type": "string",
+                                            "example": "2023-02-23T12:33:45.000000Z"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "UNPROCESSABLE CONTENT",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "The apellidos field is required."
+                                        },
+                                        "errors": {
+                                            "type": "string",
+                                            "example": "Objeto de errores"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/login": {
+            "post": {
+                "tags": [
+                    "login"
+                ],
+                "summary": "login user",
+                "operationId": "e1daa64d4db119b7b5d764a84611bb24",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "": {
+                                        "properties": {
+                                            "email": {
+                                                "type": "string"
+                                            },
+                                            "password ": {
+                                                "type": "string"
+                                            }
+                                        },
+                                        "type": "object"
+                                    }
+                                },
+                                "type": "object",
+                                "example": {
+                                    "email": "nuevouser@gmail.com",
+                                    "password": "0123456789"
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "CREATED",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Ingresado"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "UNPROCESSABLE CONTENT",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "errors": {
+                                            "type": "string",
+                                            "example": "Objeto de errores"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/courses": {
+            "get": {
+                "tags": [
+                    "course"
+                ],
+                "summary": "Show course list",
+                "operationId": "515706e6fca9a6d4592d7defd0cf7b5f",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "rows": {
+                                            "type": "array",
+                                            "items": {
+                                                "properties": {
+                                                    "id": {
+                                                        "type": "number",
+                                                        "example": "1"
+                                                    },
+                                                    "title": {
+                                                        "type": "string",
+                                                        "example": "Primero 1"
+                                                    },
+                                                    "created_at": {
+                                                        "type": "string",
+                                                        "format": "date-time",
+                                                        "example": "2023-02-23T00:09:16.000000Z"
+                                                    },
+                                                    "updated_at": {
+                                                        "type": "string",
+                                                        "format": "date-time",
+                                                        "example": "2023-02-23T12:33:45.000000Z"
+                                                    }
+                                                },
+                                                "type": "object"
+                                            }
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "course"
+                ],
+                "summary": "Register course information",
+                "operationId": "6a8235cf36effd008ac6c4baa83f862c",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "": {
+                                        "properties": {
+                                            "title": {
+                                                "type": "string"
+                                            }
+                                        },
+                                        "type": "object"
+                                    }
+                                },
+                                "type": "object",
+                                "example": {
+                                    "title": "segundo"
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "CREATED",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "id": {
+                                            "type": "number",
+                                            "example": 1
+                                        },
+                                        "title": {
+                                            "type": "string",
+                                            "example": "segundo"
+                                        },
+                                        "created_at": {
+                                            "type": "string",
+                                            "example": "2023-02-23T00:09:16.000000Z"
+                                        },
+                                        "updated_at": {
+                                            "type": "string",
+                                            "example": "2023-02-23T12:33:45.000000Z"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "UNPROCESSABLE CONTENT",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "The apellidos field is required."
+                                        },
+                                        "errors": {
+                                            "type": "string",
+                                            "example": "Objeto de errores"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/courses/{id}": {
+            "get": {
+                "tags": [
+                    "course"
+                ],
+                "summary": "Show course information",
+                "operationId": "61f0835b1075317234b5e2ed9c10132a",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "id": {
+                                            "type": "number",
+                                            "example": 1
+                                        },
+                                        "title": {
+                                            "type": "string",
+                                            "example": "quinto"
+                                        },
+                                        "created_at": {
+                                            "type": "string",
+                                            "example": "2023-02-23T00:09:16.000000Z"
+                                        },
+                                        "updated_at": {
+                                            "type": "string",
+                                            "example": "2023-02-23T12:33:45.000000Z"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "NOT FOUND",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "No query results for model [App\\\\Models\\\\Cliente] #id"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "course"
+                ],
+                "summary": "Update course information",
+                "operationId": "28eb99223ecec9a9e100edaabd27e8d4",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "": {
+                                        "properties": {
+                                            "title": {
+                                                "type": "string"
+                                            }
+                                        },
+                                        "type": "object"
+                                    }
+                                },
+                                "type": "object",
+                                "example": {
+                                    "title": "tercero"
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "id": {
+                                            "type": "number",
+                                            "example": 1
+                                        },
+                                        "title": {
+                                            "type": "string",
+                                            "example": "Tercero"
+                                        },
+                                        "created_at": {
+                                            "type": "string",
+                                            "example": "2023-02-23T00:09:16.000000Z"
+                                        },
+                                        "updated_at": {
+                                            "type": "string",
+                                            "example": "2023-02-23T12:33:45.000000Z"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "UNPROCESSABLE CONTENT",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "The apellidos field is required."
+                                        },
+                                        "errors": {
+                                            "type": "string",
+                                            "example": "Objeto de errores"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "course"
+                ],
+                "summary": "Delete course information",
+                "operationId": "3a2888333ed2868b6102094f5348520e",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "NO CONTENT"
+                    },
+                    "404": {
+                        "description": "NOT FOUND",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "No se pudo realizar correctamente la operación"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/qualifications": {
+            "get": {
+                "tags": [
+                    "qualification"
+                ],
+                "summary": "Show qualification list",
+                "operationId": "37b941ef106fc4c74ed4581ad2ba2b58",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "rows": {
+                                            "type": "array",
+                                            "items": {
+                                                "properties": {
+                                                    "id": {
+                                                        "type": "number",
+                                                        "example": "1"
+                                                    },
+                                                    "student_id": {
+                                                        "type": "number",
+                                                        "example": "1"
+                                                    },
+                                                    "course_id": {
+                                                        "type": "number",
+                                                        "example": "1"
+                                                    },
+                                                    "grade": {
+                                                        "type": "number",
+                                                        "format": "double",
+                                                        "example": "10"
+                                                    },
+                                                    "created_at": {
+                                                        "type": "string",
+                                                        "format": "date-time",
+                                                        "example": "2023-02-23T00:09:16.000000Z"
+                                                    },
+                                                    "updated_at": {
+                                                        "type": "string",
+                                                        "format": "date-time",
+                                                        "example": "2023-02-23T12:33:45.000000Z"
+                                                    }
+                                                },
+                                                "type": "object"
+                                            }
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "qualification"
+                ],
+                "summary": "Register qualification information",
+                "operationId": "d3c04878373a66bda55a405043d741c2",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "": {
+                                        "properties": {
+                                            "student_id": {
+                                                "type": "number"
+                                            },
+                                            "course_id ": {
+                                                "type": "number"
+                                            },
+                                            "grade ": {
+                                                "type": "number",
+                                                "format": "double"
+                                            }
+                                        },
+                                        "type": "object"
+                                    }
+                                },
+                                "type": "object",
+                                "example": {
+                                    "student_id": "1",
+                                    "course_id": "2",
+                                    "grade": "20"
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "CREATED",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "id": {
+                                            "type": "number",
+                                            "example": 1
+                                        },
+                                        "student_id": {
+                                            "type": "number",
+                                            "example": "1"
+                                        },
+                                        "course_id": {
+                                            "type": "number",
+                                            "example": "2"
+                                        },
+                                        "grade": {
+                                            "type": "number",
+                                            "format": "double",
+                                            "example": "20"
+                                        },
+                                        "created_at": {
+                                            "type": "string",
+                                            "example": "2023-02-23T00:09:16.000000Z"
+                                        },
+                                        "updated_at": {
+                                            "type": "string",
+                                            "example": "2023-02-23T12:33:45.000000Z"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "UNPROCESSABLE CONTENT",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "The apellidos field is required."
+                                        },
+                                        "errors": {
+                                            "type": "string",
+                                            "example": "Objeto de errores"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/qualifications/{id}": {
+            "get": {
+                "tags": [
+                    "qualification"
+                ],
+                "summary": "Show qualification information",
+                "operationId": "75eaaf18dcccc52eaab76d822372c611",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "id": {
+                                            "type": "number",
+                                            "example": 1
+                                        },
+                                        "student_id": {
+                                            "type": "number",
+                                            "example": "2"
+                                        },
+                                        "course_id": {
+                                            "type": "number",
+                                            "example": "3"
+                                        },
+                                        "grade": {
+                                            "type": "number",
+                                            "format": "double",
+                                            "example": "50"
+                                        },
+                                        "created_at": {
+                                            "type": "string",
+                                            "example": "2023-02-23T00:09:16.000000Z"
+                                        },
+                                        "updated_at": {
+                                            "type": "string",
+                                            "example": "2023-02-23T12:33:45.000000Z"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "NOT FOUND",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "No query results for model [App\\\\Models\\\\Cliente] #id"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "qualification"
+                ],
+                "summary": "Update qualification information",
+                "operationId": "d62f2be900cb37a04e10ac26fa78bab6",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "": {
+                                        "properties": {
+                                            "student_id": {
+                                                "type": "number"
+                                            },
+                                            "course_id": {
+                                                "type": "number"
+                                            },
+                                            "grade": {
+                                                "type": "number",
+                                                "format": "double"
+                                            }
+                                        },
+                                        "type": "object"
+                                    }
+                                },
+                                "type": "object",
+                                "example": {
+                                    "student_id": "2",
+                                    "course_id": "3",
+                                    "grade": "50"
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "id": {
+                                            "type": "number",
+                                            "example": 1
+                                        },
+                                        "student_id": {
+                                            "type": "number",
+                                            "example": "2"
+                                        },
+                                        "course_id": {
+                                            "type": "number",
+                                            "example": "3"
+                                        },
+                                        "grade": {
+                                            "type": "number",
+                                            "format": "double",
+                                            "example": "50"
+                                        },
+                                        "created_at": {
+                                            "type": "string",
+                                            "example": "2023-02-23T00:09:16.000000Z"
+                                        },
+                                        "updated_at": {
+                                            "type": "string",
+                                            "example": "2023-02-23T12:33:45.000000Z"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "UNPROCESSABLE CONTENT",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "The apellidos field is required."
+                                        },
+                                        "errors": {
+                                            "type": "string",
+                                            "example": "Objeto de errores"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "qualification"
+                ],
+                "summary": "Delete qualification information",
+                "operationId": "fb2d165b41e90c46722e82826706c9bf",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "NO CONTENT"
+                    },
+                    "404": {
+                        "description": "NOT FOUND",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "No se pudo realizar correctamente la operación"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/students": {
+            "get": {
+                "tags": [
+                    "student"
+                ],
+                "summary": "Show student list",
+                "operationId": "d09bbd73382335b0f8dcb61e8e8dc05a",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "rows": {
+                                            "type": "array",
+                                            "items": {
+                                                "properties": {
+                                                    "id": {
+                                                        "type": "number",
+                                                        "example": "1"
+                                                    },
+                                                    "name": {
+                                                        "type": "string",
+                                                        "example": "Dilar Pardo"
+                                                    },
+                                                    "created_at": {
+                                                        "type": "string",
+                                                        "format": "date-time",
+                                                        "example": "2023-02-23T00:09:16.000000Z"
+                                                    },
+                                                    "updated_at": {
+                                                        "type": "string",
+                                                        "format": "date-time",
+                                                        "example": "2023-02-23T12:33:45.000000Z"
+                                                    }
+                                                },
+                                                "type": "object"
+                                            }
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "student"
+                ],
+                "summary": "Register student information",
+                "operationId": "4f8706112ce0dba18082df953ff57bc6",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "": {
+                                        "properties": {
+                                            "name": {
+                                                "type": "string"
+                                            }
+                                        },
+                                        "type": "object"
+                                    }
+                                },
+                                "type": "object",
+                                "example": {
+                                    "name": "Aderson Felix"
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "CREATED",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "id": {
+                                            "type": "number",
+                                            "example": 1
+                                        },
+                                        "name": {
+                                            "type": "string",
+                                            "example": "Aderson Felix"
+                                        },
+                                        "created_at": {
+                                            "type": "string",
+                                            "example": "2023-02-23T00:09:16.000000Z"
+                                        },
+                                        "updated_at": {
+                                            "type": "string",
+                                            "example": "2023-02-23T12:33:45.000000Z"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "UNPROCESSABLE CONTENT",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "The apellidos field is required."
+                                        },
+                                        "errors": {
+                                            "type": "string",
+                                            "example": "Objeto de errores"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/students/{id}": {
+            "get": {
+                "tags": [
+                    "student"
+                ],
+                "summary": "Show student information",
+                "operationId": "0c69d6b7994835c8591aea29c144044a",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "id": {
+                                            "type": "number",
+                                            "example": 1
+                                        },
+                                        "name": {
+                                            "type": "string",
+                                            "example": "Dilar Burgos"
+                                        },
+                                        "created_at": {
+                                            "type": "string",
+                                            "example": "2023-02-23T00:09:16.000000Z"
+                                        },
+                                        "updated_at": {
+                                            "type": "string",
+                                            "example": "2023-02-23T12:33:45.000000Z"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "NOT FOUND",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "No query results for model [App\\\\Models\\\\Cliente] #id"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "student"
+                ],
+                "summary": "Update student information",
+                "operationId": "26da1846692e95e08e0ffb39f2912cc1",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "": {
+                                        "properties": {
+                                            "name": {
+                                                "type": "string"
+                                            }
+                                        },
+                                        "type": "object"
+                                    }
+                                },
+                                "type": "object",
+                                "example": {
+                                    "name": "Aderson Felix Editado"
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "id": {
+                                            "type": "number",
+                                            "example": 1
+                                        },
+                                        "name": {
+                                            "type": "string",
+                                            "example": "Aderson Felix Editado"
+                                        },
+                                        "created_at": {
+                                            "type": "string",
+                                            "example": "2023-02-23T00:09:16.000000Z"
+                                        },
+                                        "updated_at": {
+                                            "type": "string",
+                                            "example": "2023-02-23T12:33:45.000000Z"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "UNPROCESSABLE CONTENT",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "The apellidos field is required."
+                                        },
+                                        "errors": {
+                                            "type": "string",
+                                            "example": "Objeto de errores"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "student"
+                ],
+                "summary": "Delete student information",
+                "operationId": "ae8784bb4ca4b3b3614a7366dc0f5138",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "NO CONTENT"
+                    },
+                    "404": {
+                        "description": "NOT FOUND",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "No se pudo realizar correctamente la operación"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/teachers": {
+            "get": {
+                "tags": [
+                    "teacher"
+                ],
+                "summary": "Show teacher list",
+                "operationId": "4a4edcc1fc465332741acee9b3995761",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "rows": {
+                                            "type": "array",
+                                            "items": {
+                                                "properties": {
+                                                    "id": {
+                                                        "type": "number",
+                                                        "example": "1"
+                                                    },
+                                                    "name": {
+                                                        "type": "string",
+                                                        "example": "Profesor Pedrosa"
+                                                    },
+                                                    "created_at": {
+                                                        "type": "string",
+                                                        "format": "date-time",
+                                                        "example": "2023-02-23T00:09:16.000000Z"
+                                                    },
+                                                    "updated_at": {
+                                                        "type": "string",
+                                                        "format": "date-time",
+                                                        "example": "2023-02-23T12:33:45.000000Z"
+                                                    }
+                                                },
+                                                "type": "object"
+                                            }
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "teacher"
+                ],
+                "summary": "Register teacher information",
+                "operationId": "940b41dbd7595984655f40e5ea49673a",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "": {
+                                        "properties": {
+                                            "name": {
+                                                "type": "string"
+                                            }
+                                        },
+                                        "type": "object"
+                                    }
+                                },
+                                "type": "object",
+                                "example": {
+                                    "name": "Profesor Aderson casanova"
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "CREATED",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "id": {
+                                            "type": "number",
+                                            "example": 1
+                                        },
+                                        "name": {
+                                            "type": "string",
+                                            "example": "Aderson Felix"
+                                        },
+                                        "created_at": {
+                                            "type": "string",
+                                            "example": "2023-02-23T00:09:16.000000Z"
+                                        },
+                                        "updated_at": {
+                                            "type": "string",
+                                            "example": "2023-02-23T12:33:45.000000Z"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "UNPROCESSABLE CONTENT",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "The apellidos field is required."
+                                        },
+                                        "errors": {
+                                            "type": "string",
+                                            "example": "Objeto de errores"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/teachers/{id}": {
+            "get": {
+                "tags": [
+                    "teacher"
+                ],
+                "summary": "Show teacher information",
+                "operationId": "3b183527dc20469dfeedc6fb8c11f149",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "id": {
+                                            "type": "number",
+                                            "example": 1
+                                        },
+                                        "name": {
+                                            "type": "string",
+                                            "example": "Profesor Carlos Prada"
+                                        },
+                                        "created_at": {
+                                            "type": "string",
+                                            "example": "2023-02-23T00:09:16.000000Z"
+                                        },
+                                        "updated_at": {
+                                            "type": "string",
+                                            "example": "2023-02-23T12:33:45.000000Z"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "NOT FOUND",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "No query results for model [App\\\\Models\\\\Cliente] #id"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "teacher"
+                ],
+                "summary": "Update teacher information",
+                "operationId": "6cc88bb6b413aab047bc32ff7dab8d90",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "": {
+                                        "properties": {
+                                            "name": {
+                                                "type": "string"
+                                            }
+                                        },
+                                        "type": "object"
+                                    }
+                                },
+                                "type": "object",
+                                "example": {
+                                    "name": "Profesor Felix Editado"
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "id": {
+                                            "type": "number",
+                                            "example": 1
+                                        },
+                                        "name": {
+                                            "type": "string",
+                                            "example": "Profesor Felix Editado"
+                                        },
+                                        "created_at": {
+                                            "type": "string",
+                                            "example": "2023-02-23T00:09:16.000000Z"
+                                        },
+                                        "updated_at": {
+                                            "type": "string",
+                                            "example": "2023-02-23T12:33:45.000000Z"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "UNPROCESSABLE CONTENT",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "The apellidos field is required."
+                                        },
+                                        "errors": {
+                                            "type": "string",
+                                            "example": "Objeto de errores"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "teacher"
+                ],
+                "summary": "Delete teacher information",
+                "operationId": "8cdf35012d9c8278e43bb384ce1d70db",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "NO CONTENT"
+                    },
+                    "404": {
+                        "description": "NOT FOUND",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "No se pudo realizar correctamente la operación"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
